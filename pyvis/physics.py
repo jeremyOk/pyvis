@@ -44,6 +44,7 @@ class Physics(object):
             self.springConstant = params["spring_strength"]
             self.damping = params["damping"]
             self.avoidOverlap = params["overlap"]
+            
 
     class Repulsion(object):
         """
@@ -91,6 +92,7 @@ class Physics(object):
     def __init__(self):
         self.enabled = True
         self.stabilization = self.Stabilization()
+        self.timestep = 0.1
 
     def use_barnes_hut(self, params):
         self.barnesHut = self.barnesHut(params)
@@ -114,3 +116,6 @@ class Physics(object):
         return json.dumps(
             self, default=lambda o: o.__dict__,
             sort_keys=True, indent=4)
+    
+    def set_timestep(self, value):
+        self.timestep = value
